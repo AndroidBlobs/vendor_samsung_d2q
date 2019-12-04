@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+/* Copyright (c) 2018, The Linux Foundation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimer in the documentation and/or other materials provided
+ *       with the distribution.
+ *     * Neither the name of The Linux Foundation nor the names of its
+ *       contributors may be used to endorse or promote products derived
+ *       from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+ * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+-->
+<HintConfigs>
+    <Powerhint>
+        <!--video encode 30 fps-->
+        <Config
+            Id="0x00001203" Enable="true" Target="msmnile"
+            Resources="" />
+
+        <!--sustained performance-->
+        <Config
+            Id="0x00001206" Enable="true" Target="msmnile"
+            Resources=""/>
+        <!--vr mode-->
+        <Config
+            Id="0x00001207" Enable="true" Target="msmnile"
+            Resources=""/>
+        <!--launch mode-->
+        <!-- MPCTLV3_TOGGLE_POWER_COLLAPSE(0x40400000) : 1-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 2419200(973) -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1785600(6F9) -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PRIME_CORE_0(0x40800200) : 2841600(B19)-->
+        <!-- MPCTLV3_SCHED_BOOST(0x40C00000) : 2-->
+        <!-- MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : MAX(0xFF) -->
+        <!-- MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : MAX(0xFF) -->
+        <!-- -->
+        <Config
+            Id="0x00001208" Enable="false" Timeout="1500" Target="msmnile"
+            Resources="0x40400000, 1, 0x40800000, 2419200, 0x40800100, 1708, 0x40800200, 2841, 0x40C00000, 2, 0x41800000, 0xFF, 0x43000000, 0xFF, 0x40408000, 6" />
+        <!--touch mode-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 2419200(973) -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1785600(6F9) -->
+        <!-- MPCTLV3_SCHED_BOOST(0x40C00000) : 2-->
+        <!-- -->
+        <Config
+            Id="0x00001202" Enable="false" Timeout="200" Target="msmnile"
+            Resources="0x40800000, 1056, 0x40800100, 1136, 0x40C00000, 2, 0x40408000, 10" />
+        <!--vr mode sustained performance-->
+        <Config
+            Id="0x00001301" Enable="true" Target="msmnile"
+            Resources=""/>
+
+        <!-- Front Camera Preview Mode : POWER_HINT_ID_FRONT_PREVIEW -->
+        <!-- LLC min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 0x1D (2929) -->
+        <!-- CPUBW min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 0x41(6500) -->
+        <!-- LLC hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- CPUBW hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- CPUBW sampling rate : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- CPUBW IO Percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <Config
+            Id="0x00001341" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43000000, 0x1D, 0x41800000, 0x41, 0x43008000, 0x00, 0x4180C000, 0x00,
+            0x41820000, 0x0A, 0x41808000, 0x50"/>
+
+        <!-- Rear Camera Preview Mode : POWER_HINT_ID_REAR_PREVIEW -->
+        <!-- L CPU - Cluster min freq 1280Mhz : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1280-->
+        <!-- LLC hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- CPUBW hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- CPUBW sampling rate : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- LLC min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 0x26 (3879) -->
+        <!-- CPUBW min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 0x5B(9155) -->
+        <!-- L CPU- Disable PL:MPCTLV3_SCHEDUTIL_PREDICTIVE_LOAD_CLUSTER_LITTLE(0x41444100) : 0x00(0) -->
+        <!-- B CPU- Disable PL:MPCTLV3_SCHEDUTIL_PREDICTIVE_LOAD_CLUSTER_BIG(0x41444000) : 0x00(0) -->
+        <Config
+            Id="0x00001342" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources=" 0x40800100, 1280, 0x43008000, 0x00, 0x4180C000, 0x00, 0x41820000, 0x0A,
+            0x43000000, 0x26, 0x41800000, 0x5B, 0x41444100, 0x00, 0x41444000, 0x00"/>
+
+        <!-- Rear Camera Bokeh Preview Mode : POWER_HINT_ID_REAR_BOKEH_PREVIEW -->
+        <!-- LLC hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- CPUBW hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- CPUBW sampling rate : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- Sched downmigrate : MPCTLV3_SCHED_DOWNMIGRATE(0x40C20000) : 0x42(66) -->
+        <!-- Sched upmigrate : MPCTLV3_SCHED_UPMIGRATE(0x40C1C000) : 0x4C(76) -->
+        <!-- L CPU- Disable PL:MPCTLV3_SCHEDUTIL_PREDICTIVE_LOAD_CLUSTER_LITTLE(0x41444100) : 0x00(0) -->
+        <!-- B CPU- Disable PL:MPCTLV3_SCHEDUTIL_PREDICTIVE_LOAD_CLUSTER_BIG(0x41444000) : 0x00(0) -->
+        <Config
+            Id="0x00001343" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x40C20000, 0x42, 0x40C1C000, 0x4C, 0x43008000, 0x00, 0x4180C000, 0x00, 0x41820000, 0x0A,
+            0x41444100, 0x00, 0x41444000, 0x00"/>
+
+        <!-- Front Camera video encode HD 30 fps : POWER_HINT_ID_VIDEO_ENCODE_HD30_FRONT -->
+        <!-- LLC min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 0x1D (2929) -->
+        <!-- CPUBW min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 0x41(6500) -->
+        <!-- LLC hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- CPUBW hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- CPUBW sampling rate : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- CPUBW IO Percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- L CPU- Disable PL:MPCTLV3_SCHEDUTIL_PREDICTIVE_LOAD_CLUSTER_LITTLE(0x41444100) : 0x00(0) -->
+        <!-- B CPU- Disable PL:MPCTLV3_SCHEDUTIL_PREDICTIVE_LOAD_CLUSTER_BIG(0x41444000) : 0x00(0) -->
+        <Config
+            Id="0x00001344" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43000000, 0x1D, 0x41800000, 0x41, 0x40800100, 1280, 0x43008000, 0x00, 0x4180C000, 0x00,
+			0x41820000, 0x0A, 0x41808000, 0x50, 0x41444100, 0x00, 0x41444000, 0x00"/>
+
+        <!-- Front Camera video encode FHD 30 fps : POWER_HINT_ID_VIDEO_ENCODE_FHD_30FPS_FRONT -->
+        <!-- llcc-ddr-bw hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- llcc-ddr-bw sample_ms : MPCTLV3_LLCBW_HWMON_SAMPLE_MS(0x4300C000) : 0x0A(10) -->
+        <!-- llcc-ddr-bw min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 38 -->
+        <!-- cpu-llcc-bw hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- cpu-llcc-bw sample_ms : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- cpu-llcc-bw io_percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- cpu-llcc-bw min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 91 -->
+        <!-- silver cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1209 -->
+        <!-- gold cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 1401 -->
+        <!-- Sched downmigrate : MPCTLV3_SCHED_DOWNMIGRATE(0x40C20000) : 0x1E,(30) -->
+        <!-- Sched upmigrate : MPCTLV3_SCHED_UPMIGRATE(0x40C1C000) : 0x28,(40) -->
+        <Config
+            Id="0x00001345" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43008000, 0x00, 0x4300C000, 0x0A, 0x43000000, 38, 0x4180C000, 0x00,
+                       0x41820000, 0x0A, 0x41808000, 0x50, 0x41800000, 91, 0x40800100,0x4B9 ,0x40800000,0x579,0x40C20000,0x1E,0x40C1C000,0x28 "/>
+
+        <!-- video encode FHD 30 fps : POWER_HINT_ID_VIDEO_ENCODE_FHD_30FPS -->
+        <!-- llcc-ddr-bw hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- llcc-ddr-bw sample_ms : MPCTLV3_LLCBW_HWMON_SAMPLE_MS(0x4300C000) : 0x0A(10) -->
+        <!-- llcc-ddr-bw min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 25 -->
+        <!-- cpu-llcc-bw hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- cpu-llcc-bw sample_ms : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- cpu-llcc-bw io_percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- cpu-llcc-bw min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 71 -->
+        <!-- silver cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1209 -->
+        <!-- gold cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 1056 -->
+        <!-- lpm bias hyst 50 :  MPCTLV3_LPM_BIAS_HYST (0x40408000) -->
+        <Config
+            Id="0x00001346" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43008000, 0x00, 0x4300C000, 0x0A, 0x43000000, 25, 0x4180C000, 0x00,
+                       0x41820000, 0x0A, 0x41808000, 0x50, 0x41800000, 71, 0x40800100, 1209, 0x40800000, 1056"/>
+
+        <!-- video encode UHD 30 fps : POWER_HINT_ID_VIDEO_ENCODE_UHD_30FPS -->
+        <!-- llcc-ddr-bw hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- llcc-ddr-bw sample_ms : MPCTLV3_LLCBW_HWMON_SAMPLE_MS(0x4300C000) : 0x0A(10) -->
+        <!-- llcc-ddr-bw min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 38 -->
+        <!-- cpu-llcc-bw hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- cpu-llcc-bw sample_ms : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- cpu-llcc-bw io_percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- cpu-llcc-bw min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 71 -->
+        <!-- silver cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1209 -->
+        <!-- gold cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 1056 -->
+        <!-- Sched downmigrate : MPCTLV3_SCHED_DOWNMIGRATE(0x40C20000) : 0x32(50) -->
+        <!-- Sched upmigrate : MPCTLV3_SCHED_UPMIGRATE(0x40C1C000) : 0x3C(60) -->
+        <Config
+            Id="0x00001347" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43008000, 0x00, 0x4300C000, 0x0A, 0x43000000, 38, 0x4180C000, 0x00,
+                       0x41820000, 0x0A, 0x41808000, 0x50, 0x41800000, 71, 0x40800100, 1209, 0x40800000, 1056, 0x40C20000, 0x1E, 0x40C1C000, 0x28"/>
+
+        <!-- video encode FHD 60 fps : POWER_HINT_ID_VIDEO_ENCODE_FHD_60FPS -->
+        <!-- llcc-ddr-bw hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- llcc-ddr-bw sample_ms : MPCTLV3_LLCBW_HWMON_SAMPLE_MS(0x4300C000) : 0x0A(10) -->
+        <!-- llcc-ddr-bw min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 51 -->
+        <!-- cpu-llcc-bw hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- cpu-llcc-bw sample_ms : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- cpu-llcc-bw io_percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- cpu-llcc-bw min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 91 -->
+        <!-- silver cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1209 -->
+        <!-- gold cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 1286 -->
+        <!-- Sched downmigrate : MPCTLV3_SCHED_DOWNMIGRATE(0x40C20000) : 0x1E(30) -->
+        <!-- Sched upmigrate : MPCTLV3_SCHED_UPMIGRATE(0x40C1C000) : 0x28(40) -->
+        <Config
+            Id="0x00001348" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43008000, 0x00, 0x4300C000, 0x0A, 0x43000000, 51, 0x4180C000, 0x00, 0x41820000, 0x0A, 0x41808000, 0x50,
+                       0x41800000, 122, 0x40800100, 1209, 0x40800000, 1286, 0x40C20000, 0x1E, 0x40C1C000, 0x28"/>
+
+        <!-- video encode UHD 60 fps : POWER_HINT_ID_VIDEO_ENCODE_UHD_60FPS -->
+        <!-- llcc-ddr-bw hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- llcc-ddr-bw sample_ms : MPCTLV3_LLCBW_HWMON_SAMPLE_MS(0x4300C000) : 0x0A(10) -->
+        <!-- llcc-ddr-bw min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 38 -->
+        <!-- cpu-llcc-bw hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- cpu-llcc-bw sample_ms : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- cpu-llcc-bw io_percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- cpu-llcc-bw min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 91 -->
+        <!-- silver cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1209 -->
+        <!-- gold cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 1286 -->
+        <!-- Sched downmigrate : MPCTLV3_SCHED_DOWNMIGRATE(0x40C20000) : 0x1E,(30) -->
+        <!-- Sched upmigrate : MPCTLV3_SCHED_UPMIGRATE(0x40C1C000) : 0x28,(40) -->
+        <Config
+            Id="0x00001349" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43008000, 0x00, 0x4300C000, 0x0A, 0x43000000, 38, 0x4180C000, 0x00, 0x41820000, 0x0A, 0x41808000, 0x50,
+                       0x41800000, 91, 0x40800100, 1209, 0x40800000, 1286, 0x40C20000, 0x1E, 0x40C1C000, 0x28"/>
+
+        <!-- video encode HFR240 fps : POWER_HINT_ID_VIDEO_ENCODE_HFR -->
+        <!-- llcc-ddr-bw hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- llcc-ddr-bw sample_ms : MPCTLV3_LLCBW_HWMON_SAMPLE_MS(0x4300C000) : 0x0A(10) -->
+        <!-- llcc-ddr-bw min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 38 -->
+        <!-- cpu-llcc-bw hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- cpu-llcc-bw sample_ms : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- cpu-llcc-bw io_percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- cpu-llcc-bw min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 91 -->
+        <!-- silver cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1209 -->
+        <!-- gold cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 1286 -->
+        <!-- Sched downmigrate : MPCTLV3_SCHED_DOWNMIGRATE(0x40C20000) : 0x1E(30) -->
+        <!-- Sched upmigrate : MPCTLV3_SCHED_UPMIGRATE(0x40C1C000) : 0x28(40) -->
+        <Config
+            Id="0x0000134A" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43008000, 0x00, 0x4300C000, 0x0A, 0x43000000, 38, 0x4180C000, 0x00, 0x41820000, 0x0A, 0x41808000, 0x50,
+                       0x41800000, 91, 0x40800100, 1209, 0x40800000, 1286, 0x40C20000, 0x1E, 0x40C1C000, 0x28"/>
+
+        <!-- video encode HD 30 fps HDR10+ : POWER_HINT_ID_VIDEO_ENCODE_HD30FPS_HDR10 -->
+        <!-- llcc-ddr-bw hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- llcc-ddr-bw sample_ms : MPCTLV3_LLCBW_HWMON_SAMPLE_MS(0x4300C000) : 0x0A(10) -->
+        <!-- llcc-ddr-bw min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 25 -->
+        <!-- cpu-llcc-bw hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- cpu-llcc-bw sample_ms : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- cpu-llcc-bw io_percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- cpu-llcc-bw min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 71 -->
+        <!-- silver cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1209 -->
+        <!-- gold cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 1056 -->
+        <!-- Sched downmigrate : MPCTLV3_SCHED_DOWNMIGRATE(0x40C20000) : 0x14,(20) -->
+        <!-- Sched upmigrate : MPCTLV3_SCHED_UPMIGRATE(0x40C1C000) : 0x1E,(30) -->
+        <Config
+            Id="0x0000134B" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43008000, 0x00, 0x4300C000, 0x0A, 0x43000000, 25, 0x4180C000, 0x00, 0x41820000, 0x0A, 0x41808000, 0x50,
+                       0x41800000, 71, 0x40800100, 1209, 0x40800000, 1056 ,0x40C20000, 20, 0x40C1C000, 30"/>
+
+        <!-- video encode UHD 30 fps HDR10+ : POWER_HINT_ID_VIDEO_ENCODE_UHD30FPS_HDR10 -->
+        <!-- llcc-ddr-bw hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- llcc-ddr-bw sample_ms : MPCTLV3_LLCBW_HWMON_SAMPLE_MS(0x4300C000) : 0x0A(10) -->
+        <!-- llcc-ddr-bw min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 38 -->
+        <!-- cpu-llcc-bw hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- cpu-llcc-bw sample_ms : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- cpu-llcc-bw io_percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- cpu-llcc-bw min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 91 -->
+        <!-- silver cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1785 -->
+        <!-- gold cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 1497 -->
+        <!-- Sched downmigrate : MPCTLV3_SCHED_DOWNMIGRATE(0x40C20000) : 0x14,(20) -->
+        <!-- Sched upmigrate : MPCTLV3_SCHED_UPMIGRATE(0x40C1C000) : 0x1E,(30) -->
+	    <!-- LPM disable : MPCTLV3_ALL_CPUS_PWR_CLPS_DIS(0x40400000) : 0x01-->
+        <Config
+            Id="0x0000134C" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43008000, 0x00, 0x4300C000, 0x0A, 0x43000000, 38, 0x4180C000, 0x00, 0x41820000, 0x0A, 0x41808000, 0x50,
+                       0x41800000, 91, 0x40800100, 1785, 0x40800000, 1497, 0x40C20000, 0x14, 0x40C1C000, 0x1E, 0x40400000, 1"/>
+
+        <!-- video encode LIVE FOCUS VIDEO : POWER_HINT_ID_VIDEO_ENCODE_LIVE_FOCUS_VIDEO -->
+        <!-- llcc-ddr-bw hyst disable : MPCTLV3_LLCBW_HWMON_HYST_OPT(0x43008000) : 0x00(0) -->
+        <!-- llcc-ddr-bw sample_ms : MPCTLV3_LLCBW_HWMON_SAMPLE_MS(0x4300C000) : 0x0A(10) -->
+        <!-- llcc-ddr-bw min_freq : MPCTLV3_LLCBW_HWMON_MIN_FREQ(0x43000000) : 38 -->
+        <!-- cpu-llcc-bw hyst disable : MPCTLV3_CPUBW_HWMON_HYST_OPT(0x4180C000) : 0x00(0) -->
+        <!-- cpu-llcc-bw sample_ms : MPCTLV3_CPUBW_HWMON_SAMPLE_MS(0x41820000) : 0x0A(10) -->
+        <!-- cpu-llcc-bw io_percent : MPCTLV3_CPUBW_HWMON_IO_PERCENT(0x41808000) : 0x50(80) -->
+        <!-- cpu-llcc-bw min_freq : MPCTLV3_CPUBW_HWMON_MIN_FREQ(0x41800000) : 91 -->
+        <!-- silver cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0(0x40800100) : 1209 -->
+        <!-- gold cluster min freq : MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0(0x40800000) : 1401 -->
+        <!-- Sched downmigrate : MPCTLV3_SCHED_DOWNMIGRATE(0x40C20000) : 0x1E,(30) -->
+        <!-- Sched upmigrate : MPCTLV3_SCHED_UPMIGRATE(0x40C1C000) : 0x28,(40) -->
+        <Config
+            Id="0x0000134D" Enable="true" Timeout="3600000" Target="msmnile"
+            Resources="0x43008000, 0x00, 0x4300C000, 0x0A, 0x43000000, 38, 0x4180C000, 0x00,
+                       0x41820000, 0x0A, 0x41808000, 0x50, 0x41800000, 91, 0x40800100,0x4B9 ,0x40800000,0x579,0x40C20000,0x1E,0x40C1C000,0x28 "/>
+    </Powerhint>
+</HintConfigs>
+

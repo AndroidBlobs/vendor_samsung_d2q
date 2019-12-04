@@ -1,0 +1,7 @@
+service neuralnetworks_hal_service /vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-qti
+    class hal
+    user system
+    group system
+
+on property:sys.boot_completed=1
+    setprop vendor.fastrpc.process.attrs 1

@@ -1,0 +1,8 @@
+{
+	"version_id": "v5",
+	"tag" : "5.1",
+	"model_type" : "cpu",
+    "precision" : "float16"
+
+}
+
