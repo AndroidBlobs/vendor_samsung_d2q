@@ -1,0 +1,4 @@
+service icccserv /vendor/bin/hw/vendor.samsung.hardware.tlc.iccc@1.0-service
+    class hal
+    user system
+    group system
